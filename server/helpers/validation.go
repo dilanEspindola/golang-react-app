@@ -32,3 +32,10 @@ func ValidateStruct[T ValidateStructs](myStruct T) []*ErrorResponse {
 	}
 	return errors
 }
+
+func ErrorValidations(errorKind, data string) string {
+	var matcher = map[string]string{
+		"Error 1062: Duplicate entry " + "'" + data + "'" + " for key 'users.email'": "email already exists",
+	}
+	return matcher[errorKind]
+}
